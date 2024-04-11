@@ -185,7 +185,7 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php7.domaine1.com
-   DocumentRoot "/var/www/domaine1-php7"
+   DocumentRoot "/var/www/html/domaine1-php7"
    <FilesMatch \.php$>
        SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine1.sock|fcgi://localhost/"
    </FilesMatch>
@@ -203,7 +203,7 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php8.domaine1.com
-   DocumentRoot "/var/www/domaine1-php8"
+   DocumentRoot "/var/www/html/domaine1-php8"
    <FilesMatch \.php$>
        SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine1.sock|fcgi://localhost/"
    </FilesMatch>
@@ -234,7 +234,7 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php7.domaine2.com
-   DocumentRoot "/var/www/domaine2-php7"
+   DocumentRoot "/var/www/html/domaine2-php7"
    <FilesMatch \.php$>
        SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine2.sock|fcgi://localhost/"
    </FilesMatch>
@@ -252,7 +252,7 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php8.domaine2.com
-   DocumentRoot "/var/www/domaine2-php8"
+   DocumentRoot "/var/www/html/domaine2-php8"
    <FilesMatch \.php$>
        SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine2.sock|fcgi://localhost/"
    </FilesMatch>
@@ -270,4 +270,75 @@ a2ensite domaine2-php8.conf
 modules proxy et proxy_fcgi :
 ```
 a2enmod proxy proxy_fcgi
+```
+
+**Pour terminer notre configuration, nous allons créer nos 4 pages phpinfo.php :**
+
+**Sur SRV-WEB1 :**
+
+
+```
+nano /var/www/html/domaine1-php7
+```
+Dans domaine1-php8 renseigner :
+```
+<?php
+
+phpinfo( );
+
+?>
+```
+
+**Puis :**
+
+```
+nano /var/www/html/domaine1-php8
+```
+Dans domaine1-php8 renseigner :
+```
+<?php
+
+phpinfo( );
+
+?>
+```
+
+**Sur SRV-WEB2 :**
+
+
+```
+nano /var/www/html/domaine2-php7
+```
+Dans domaine1-php8 renseigner :
+```
+<?php
+
+phpinfo( );
+
+?>
+```
+
+**Puis :**
+
+```
+nano /var/www/html/domaine2-php8
+```
+Dans domaine1-php8 renseigner :
+```
+<?php
+
+phpinfo( );
+
+?>
+```
+
+**On relance ensuite les services sur les deux serveurs :**
+```
+systemctl restart apache2
+```
+```
+systemctl restart php7.0-fpm
+```
+```
+systemctl restart php8.0-fpm
 ```
