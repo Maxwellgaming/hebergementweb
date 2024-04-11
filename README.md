@@ -234,7 +234,9 @@ modules proxy et proxy_fcgi :
 ```
 a2enmod proxy proxy_fcgi
 ```
-
+```
+sudo a2enmod proxy_http
+```
 
 **Sur SRV-WEB2 :** 
 
@@ -297,6 +299,9 @@ a2ensite domaine2-php8.conf
 modules proxy et proxy_fcgi :
 ```
 a2enmod proxy proxy_fcgi
+```
+```
+sudo a2enmod proxy_http
 ```
 
 **Pour terminer notre configuration, nous allons créer nos 4 pages phpinfo.php :**
