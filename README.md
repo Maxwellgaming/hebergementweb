@@ -23,6 +23,11 @@ Pour cet EI nous allons partir du principe que :
 après **login**, nous passons en SuperUser avec la commande ```sudo su```
 
 
+
+/!\ pour utiliser des anciennes versions de php, nous allons faire appel a des repository publiques, cela représente un risque de sécurité, continuez avec prudence !
+
+```add-apt-repository ppa:ondrej/php```
+
 On met à jour le catalogue d'application (apt), le paramètre -y répond "yes" a toutes les demandes :
 
 ```apt-get update -y```
@@ -32,7 +37,34 @@ On met à jour le catalogue d'application (apt), le paramètre -y répond "yes" 
 ```apt-get upgrade -y``` 
 
 
-**crédits à [Antonin](https://github.com/antoninpomies/HebergementWeb) :** ```apt install sudo apache2 mariadb-server php libapache2-mod-php php-mysql openssh-server php7.4 libapache2-mod-php7.4 -y && systemctl enable apache2```
+
+
+
+
+puis :
+
+```apt install software-properties-common```
+
+Ensuite :
+
+``` apt install python3-launchpadlib```
+
+** et enfin :**
+
+
+
+
+```sudo apt-get install ca-certificates apt-transport-https software-properties-common wget curl lsb-release```
+
+**puis :**
+
+```curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x```
+
+**puis**
+
+```sudo apt-get update```
+
+**crédits à [Antonin](https://github.com/antoninpomies/HebergementWeb) :** ```apt install sudo apache2 mariadb-server php libapache2-mod-php php-mysql openssh-server php8.1 libapache2-mod-php8.1 php-fpm -y && systemctl enable apache2```
 
 une fois mis a jour, nous allons nous connecter en **SSH** (Secure SHell) via **Putty**, a l'adresse ip renvoyée par cette commande :
 
