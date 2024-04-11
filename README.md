@@ -26,8 +26,6 @@ après **login**, nous passons en SuperUser avec la commande ```sudo su```
 
 /!\ pour utiliser des anciennes versions de php, nous allons faire appel a des repository publiques, cela représente un risque de sécurité, continuez avec prudence !
 
-```add-apt-repository ppa:ondrej/php```
-
 puis :
 
 ```apt install software-properties-common```
@@ -35,6 +33,12 @@ puis :
 **Ensuite :**
 
 ``` apt install python3-launchpadlib```
+
+**puis :**
+
+```add-apt-repository ppa:ondrej/php```
+
+
 
 On met à jour le catalogue d'application (apt), le paramètre -y répond "yes" a toutes les demandes :
 
