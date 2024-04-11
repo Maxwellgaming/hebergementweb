@@ -36,23 +36,7 @@ On met à jour le catalogue d'application (apt), le paramètre -y répond "yes" 
 
 ```apt-get upgrade -y``` 
 
-
-
-
-
-
-puis :
-
-```apt install software-properties-common```
-
-Ensuite :
-
-``` apt install python3-launchpadlib```
-
-** et enfin :**
-
-
-
+**puis**
 
 ```sudo apt-get install ca-certificates apt-transport-https software-properties-common wget curl lsb-release```
 
@@ -76,6 +60,7 @@ Cela nous apporte principalement la gestion du copier-coller avec un clic droit 
 **Configuration des serveurs :**
 
 La partie suivante ne s'applique qu'aux serveurs web (SRV-WEB1 et SRV-WEB2) :
+
 
 
 
