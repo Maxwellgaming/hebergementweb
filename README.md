@@ -32,12 +32,21 @@ On met à jour le catalogue d'application (apt), le paramètre -y répond "yes" 
 ```apt-get upgrade -y``` 
 
 
-**crédit à [Antonin](https://github.com/antoninpomies/HebergementWeb) :** ```apt install sudo apache2 mariadb-server php libapache2-mod-php php-mysql openssh-server -y && systemctl enable apache2```
+**crédits à [Antonin](https://github.com/antoninpomies/HebergementWeb) :** ```apt install sudo apache2 mariadb-server php libapache2-mod-php php-mysql openssh-server php7.4 libapache2-mod-php7.4 -y && systemctl enable apache2```
 
 une fois mis a jour, nous allons nous connecter en **SSH** (Secure SHell) via **Putty**, a l'adresse ip renvoyée par cette commande :
 
 ```ip a | grep inet | grep ens33```
 
-Cela nous apporte principalement la gestion copier-coller avec un clic droit !
+Cela nous apporte principalement la gestion du copier-coller avec un clic droit !
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+**Configuration des serveurs :**
+
+La partie suivante ne s'applique qu'aux serveurs web (SRV-WEB1 et SRV-WEB2) :
+
+
+
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
