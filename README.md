@@ -406,16 +406,26 @@ et coller la configuration suivante :
 </VirtualHost>
 ```
 
-
-
-
-
+créer un fichier nominatif de configuration avec :
 ```
-a2enmod proxy_http
+nano /etc/apache2/sites-available/domaine2.com.conf
 ```
+et coller la configuration suivante :
+```
+<VirtualHost *:80>
+    ServerName domaine2.com
+    ProxyPreserveHost On
+    ProxyPass / http://adresse_ip_serveur_web2/
+    ProxyPassReverse / http://adresse_ip_serveur_web2/
+</VirtualHost>
+```
+
+
+on redémarre le service apache2 :
 ```
 systemctl restart apache2
 ```
+on vérifie qu'il est en status "Active" :
 ```
 systemctl status apache2
 ```
@@ -436,3 +446,5 @@ C:\Windows\System32\drivers\etc\
 <ip du reverse proxy> domaine2.com
 ```
 ^ Nous renseignons l'adresse du reverse proxy puisque se sera lui qui redirigera les utilisateurs vers la bonne adresse ip en fonction de l'URL saisie.
+
+**6) vérifications**
