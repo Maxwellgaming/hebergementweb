@@ -9,6 +9,7 @@ Pour cet EI nous allons partir du principe que :
   ```
   apt-get install openssh-server
   ```
+- pour une attribution d'ip différente de la machine, passer le mode de connection de la VM en "Accès par pont"
 
 **Logiciels utilisés :**
 
@@ -300,9 +301,6 @@ modules proxy et proxy_fcgi :
 ```
 a2enmod proxy proxy_fcgi
 ```
-```
-sudo a2enmod proxy_http
-```
 
 **Pour terminer notre configuration, nous allons créer nos 4 pages phpinfo.php :**
 
@@ -381,3 +379,60 @@ systemctl restart php7.0-fpm
 ```
 systemctl restart php8.0-fpm
 ```
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**4) Partie Reverse proxy**
+
+**Sur le SRV-RPX :**
+
+Pour récupérer l'adresse ip des serveurs, saisissez la commande suivante :
+```
+ip addr
+```
+
+créer un fichier nominatif de configuration avec :
+```
+nano /etc/apache2/sites-available/domaine1.com.conf
+```
+et coller la configuration suivante :
+```
+<VirtualHost *:80>
+    ServerName domaine1.com
+    ProxyPreserveHost On
+    ProxyPass / http://adresse_ip_serveur_web1/
+    ProxyPassReverse / http://adresse_ip_serveur_web1/
+</VirtualHost>
+```
+
+
+
+
+
+```
+a2enmod proxy_http
+```
+```
+systemctl restart apache2
+```
+```
+systemctl status apache2
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**5) Modification du fichier Hosts**
+
+Sous 
+```
+C:\Windows\System32\drivers\etc\
+```
+
+**éditez** avec **Notepad++** en mode **Admin** le fichier **hosts**, c'est un fichier système, vous devrez donc avoir les droits sur ce fichier, saisissez les lignes suivantes :
+
+```
+<ip du reverse proxy> domaine1.com
+<ip du reverse proxy> domaine2.com
+```
+^ Nous renseignons l'adresse du reverse proxy puisque se sera lui qui redirigera les utilisateurs vers la bonne adresse ip en fonction de l'URL saisie.
