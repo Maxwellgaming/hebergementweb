@@ -69,15 +69,57 @@ une fois mis a jour, nous allons nous connecter en **SSH** (Secure SHell) via **
 Cela nous apporte principalement la gestion du copier-coller avec un clic droit !
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
-**Configuration des serveurs :**
+
+2) **Configuration des serveurs :**
 
 La partie suivante ne s'applique qu'aux serveurs web (SRV-WEB1 et SRV-WEB2) :
 
 ```sudo cp /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/domaine1-php7.conf```
 ```sudo cp /etc/php/8.2/fpm/pool.d/www.conf /etc/php/8.2/fpm/pool.d/domaine1-php8.conf```
 
+**puis :**
+ ```nano /etc/php/7.4/fpm/pool.d/domaine1-php7.conf```
+
+ et changer
+ 
+ - **[www]** par -> **[domaine1-php7]** ou tout autre nom de sous domaine de votre choix
+ - La ligne **listen =** -> **listen = /run/php/php7.4-fpm-domaine1.sock**
+
+ **même chose sur la version 8.2 :**
+
+```nano /etc/php/8.2/fpm/pool.d/domaine1-php8.conf```
+
+ et changer
+ 
+ - **[www]** par -> **[domaine1-php8]** ou tout autre nom de sous domaine de votre choix
+ - La ligne **listen =** -> **listen = /run/php/php8.2-fpm-domaine1.sock**
 
 
 
+
+**Refaire cette partie pour le deuxième serveur :**
+
+
+
+
+```sudo cp /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/domaine2-php7.conf```
+```sudo cp /etc/php/8.2/fpm/pool.d/www.conf /etc/php/8.2/fpm/pool.d/domaine2-php8.conf```
+
+**puis :**
+ ```nano /etc/php/7.4/fpm/pool.d/domaine2-php7.conf```
+
+ et changer
+ 
+ - **[www]** par -> **[domaine2-php7]** ou tout autre nom de sous domaine de votre choix
+ - La ligne **listen =** -> **listen = /run/php/php7.4-fpm-domaine2.sock**
+ 
+ **même chose sur la version 8.2 :**
+
+```nano /etc/php/8.2/fpm/pool.d/domaine2-php8.conf```
+
+ et changer
+ 
+ - **[www]** par -> **[domaine2-php8]** ou tout autre nom de sous domaine de votre choix
+ - La ligne **listen =** -> **listen = /run/php/php8.2-fpm-domaine2.sock**
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
