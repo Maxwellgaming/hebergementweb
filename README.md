@@ -87,7 +87,9 @@ La partie suivante ne s'applique qu'aux serveurs web (SRV-WEB1 et SRV-WEB2) :
 
  **même chose sur la version 8.2 :**
 
-```nano /etc/php/8.2/fpm/pool.d/domaine1-php8.conf```
+```
+nano /etc/php/8.2/fpm/pool.d/domaine1-php8.conf
+```
 
  et changer
  
