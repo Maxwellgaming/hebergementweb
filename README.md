@@ -60,7 +60,7 @@ On met à jour le catalogue d'application (apt), le paramètre -y répond "yes" 
 
 ```sudo apt-get update```
 
-**crédits à [Antonin](https://github.com/antoninpomies/HebergementWeb) :** ```apt install sudo apache2 mariadb-server php libapache2-mod-php php-mysql openssh-server php8.1 libapache2-mod-php8.1 php-fpm -y && systemctl enable apache2```
+**crédits à [Antonin](https://github.com/antoninpomies/HebergementWeb) :** ```apt install sudo apache2 mariadb-server php libapache2-mod-php php-mysql openssh-server php8.1 libapache2-mod-php8.1 php8.2-fpm php7.4-fpm -y && systemctl enable apache2```
 
 une fois mis a jour, nous allons nous connecter en **SSH** (Secure SHell) via **Putty**, a l'adresse ip renvoyée par cette commande :
 
@@ -73,6 +73,8 @@ Cela nous apporte principalement la gestion du copier-coller avec un clic droit 
 
 La partie suivante ne s'applique qu'aux serveurs web (SRV-WEB1 et SRV-WEB2) :
 
+```sudo cp /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/domaine1-php7.conf```
+```sudo cp /etc/php/8.2/fpm/pool.d/www.conf /etc/php/8.2/fpm/pool.d/domaine1-php8.conf```
 
 
 
