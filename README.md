@@ -464,3 +464,15 @@ Se rendre aux URL suivantes :
 ```php8.domaine1.com```
 ```php7.domaine2.com```
 ```php8.domaine2.com```
+
+
+pour corriger l'erreur de nom de domaine non résolu :
+
+```
+nano /etc/apache2/apache2.conf
+```
+et rajouter une ligne :
+
+```
+
+```
