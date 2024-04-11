@@ -194,6 +194,7 @@ et coller la configuration suivante (à adapter) :
 <VirtualHost *:80>
    ServerName php7.domaine1.com
    DocumentRoot /var/www/domaine1-php7
+   DirectoryIndex infophp.php
    <FilesMatch \.php$>
        SetHandler proxy:unix:/run/php/php7.4-fpm-domaine1.sock|fcgi://localhost/
    </FilesMatch>
