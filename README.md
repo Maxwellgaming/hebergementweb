@@ -176,6 +176,13 @@ nano /etc/php/8.2/fpm/pool.d/domaine2-php8.conf
 
 
 **Sur SRV-WEB1 :** 
+
+on créer le dossier avec :
+
+```
+mkdir -p /var/www/domaine1-php7
+```
+
 ```
 nano /etc/apache2/sites-available/domaine1-php7.conf
 ```
@@ -185,14 +192,19 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php7.domaine1.com
-   DocumentRoot "/var/www/html/domaine1-php7"
+   DocumentRoot /var/www/domaine1-php7
    <FilesMatch \.php$>
-       SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine1.sock|fcgi://localhost/"
+       SetHandler proxy:unix:/run/php/php7.4-fpm-domaine1.sock|fcgi://localhost/
    </FilesMatch>
 </VirtualHost>
 ```
 
 **puis :**
+on créer le dossier avec :
+
+```
+mkdir -p /var/www/domaine1-php7
+```
 
 ```
 nano /etc/apache2/sites-available/domaine1-php8.conf
@@ -203,9 +215,9 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php8.domaine1.com
-   DocumentRoot "/var/www/html/domaine1-php8"
+   DocumentRoot /var/www/domaine1-php8
    <FilesMatch \.php$>
-       SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine1.sock|fcgi://localhost/"
+       SetHandler proxy:unix:/run/php/php8.2-fpm-domaine1.sock|fcgi://localhost/
    </FilesMatch>
 </VirtualHost>
 ```
@@ -225,6 +237,15 @@ a2enmod proxy proxy_fcgi
 
 
 **Sur SRV-WEB2 :** 
+
+
+on créer le dossier avec :
+
+```
+mkdir -p /var/www/domaine2-php7
+```
+
+
 ```
 nano /etc/apache2/sites-available/domaine2-php7.conf
 ```
@@ -234,14 +255,20 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php7.domaine2.com
-   DocumentRoot "/var/www/html/domaine2-php7"
+   DocumentRoot /var/www/domaine2-php7
    <FilesMatch \.php$>
-       SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine2.sock|fcgi://localhost/"
+       SetHandler proxy:unix:/run/php/php7.4-fpm-domaine2.sock|fcgi://localhost/
    </FilesMatch>
 </VirtualHost>
 ```
 
 **puis :**
+
+on créer le dossier avec :
+
+```
+mkdir -p /var/www/domaine2-php8
+```
 
 ```
 nano /etc/apache2/sites-available/domaine2-php8.conf
@@ -252,9 +279,9 @@ et coller la configuration suivante (à adapter) :
 ```
 <VirtualHost *:80>
    ServerName php8.domaine2.com
-   DocumentRoot "/var/www/html/domaine2-php8"
+   DocumentRoot /var/www/domaine2-php8
    <FilesMatch \.php$>
-       SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine2.sock|fcgi://localhost/"
+       SetHandler proxy:unix:/run/php/php8.2-fpm-domaine2.sock|fcgi://localhost/
    </FilesMatch>
 </VirtualHost>
 ```
@@ -278,9 +305,9 @@ a2enmod proxy proxy_fcgi
 
 
 ```
-nano /var/www/html/domaine1-php7
+nano /var/www/domaine1-php7/infophp.php
 ```
-Dans domaine1-php8 renseigner :
+Dans **infophp.php** renseigner :
 ```
 <?php
 
@@ -292,9 +319,9 @@ phpinfo( );
 **Puis :**
 
 ```
-nano /var/www/html/domaine1-php8
+nano /var/www/domaine1-php8/infophp.php
 ```
-Dans domaine1-php8 renseigner :
+Dans **infophp.php** renseigner :
 ```
 <?php
 
@@ -307,9 +334,9 @@ phpinfo( );
 
 
 ```
-nano /var/www/html/domaine2-php7
+nano /var/www/domaine2-php7/infophp.php
 ```
-Dans domaine1-php8 renseigner :
+Dans **infophp.php** renseigner :
 ```
 <?php
 
@@ -321,9 +348,9 @@ phpinfo( );
 **Puis :**
 
 ```
-nano /var/www/html/domaine2-php8
+nano /var/www/domaine2-php8/infophp.php
 ```
-Dans domaine1-php8 renseigner :
+Dans **infophp.php** renseigner :
 ```
 <?php
 
@@ -331,6 +358,13 @@ phpinfo( );
 
 ?>
 ```
+
+On s'assure de n'avoir fait aucune erreur dans nos fichiers avec la commande : 
+```
+apachectl configtest
+```
+
+Si tout se passe bien, on passe à la suite.
 
 **On relance ensuite les services sur les deux serveurs :**
 ```
