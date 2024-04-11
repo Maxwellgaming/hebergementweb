@@ -204,7 +204,7 @@ et coller la configuration suivante (à adapter) :
 on créer le dossier avec :
 
 ```
-mkdir -p /var/www/domaine1-php7
+mkdir -p /var/www/domaine1-php8
 ```
 
 ```
