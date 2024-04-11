@@ -166,4 +166,46 @@ nano /etc/php/8.2/fpm/pool.d/domaine2-php8.conf
  - **[www]** par -> **[domaine2-php8]** ou tout autre nom de sous domaine de votre choix
  - La ligne **listen =** -> **listen = /run/php/php8.2-fpm-domaine2.sock**
 
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**3) Création des fichiers de conf VirtualHost :**
+
+**Toujours a effectuer sur les serveurs SRV-WEB1 et SRV-WEB2**
+
+
+
+**Sur SRV-WEB1 :** 
+```
+nano /etc/apache2/sites-available/domaine1-php7.conf
+```
+
+et coller la configuration suivante (à adapter) :
+
+```
+<VirtualHost *:80>
+   ServerName php7.domaine1.com
+   DocumentRoot "/var/www/domaine1-php7"
+   <FilesMatch \.php$>
+       SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine1.sock|fcgi://localhost/"
+   </FilesMatch>
+</VirtualHost>
+```
+
+**puis :**
+
+```
+nano /etc/apache2/sites-available/domaine1-php8.conf
+```
+
+et coller la configuration suivante (à adapter) :
+
+```
+<VirtualHost *:80>
+   ServerName php8.domaine1.com
+   DocumentRoot "/var/www/domaine1-php8"
+   <FilesMatch \.php$>
+       SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine1.sock|fcgi://localhost/"
+   </FilesMatch>
+</VirtualHost>
+```
