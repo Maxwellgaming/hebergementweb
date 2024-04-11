@@ -209,3 +209,65 @@ et coller la configuration suivante (à adapter) :
    </FilesMatch>
 </VirtualHost>
 ```
+
+On active les modules nécéssaires aux sites :     
+
+```
+a2ensite domaine1-php7.conf
+```
+```
+a2ensite domaine1-php8.conf
+```
+modules proxy et proxy_fcgi :
+```
+a2enmod proxy proxy_fcgi
+```
+
+
+**Sur SRV-WEB2 :** 
+```
+nano /etc/apache2/sites-available/domaine2-php7.conf
+```
+
+et coller la configuration suivante (à adapter) :
+
+```
+<VirtualHost *:80>
+   ServerName php7.domaine2.com
+   DocumentRoot "/var/www/domaine2-php7"
+   <FilesMatch \.php$>
+       SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine2.sock|fcgi://localhost/"
+   </FilesMatch>
+</VirtualHost>
+```
+
+**puis :**
+
+```
+nano /etc/apache2/sites-available/domaine2-php8.conf
+```
+
+et coller la configuration suivante (à adapter) :
+
+```
+<VirtualHost *:80>
+   ServerName php8.domaine2.com
+   DocumentRoot "/var/www/domaine2-php8"
+   <FilesMatch \.php$>
+       SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine2.sock|fcgi://localhost/"
+   </FilesMatch>
+</VirtualHost>
+```
+
+On active les modules nécéssaires aux sites :     
+
+```
+a2ensite domaine2-php7.conf
+```
+```
+a2ensite domaine2-php8.conf
+```
+modules proxy et proxy_fcgi :
+```
+a2enmod proxy proxy_fcgi
+```
