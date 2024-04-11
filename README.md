@@ -28,6 +28,14 @@ après **login**, nous passons en SuperUser avec la commande ```sudo su```
 
 ```add-apt-repository ppa:ondrej/php```
 
+puis :
+
+```apt install software-properties-common```
+
+**Ensuite :**
+
+``` apt install python3-launchpadlib```
+
 On met à jour le catalogue d'application (apt), le paramètre -y répond "yes" a toutes les demandes :
 
 ```apt-get update -y```
