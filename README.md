@@ -374,10 +374,10 @@ Si tout se passe bien, on passe à la suite.
 systemctl restart apache2
 ```
 ```
-systemctl restart php7.0-fpm
+systemctl restart php7.4-fpm
 ```
 ```
-systemctl restart php8.0-fpm
+systemctl restart php8.2-fpm
 ```
 
 
