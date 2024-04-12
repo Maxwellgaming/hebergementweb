@@ -474,6 +474,16 @@ pour corriger l'erreur de nom de domaine non résolu :
 ```
 nano /etc/apache2/apache2.conf
 ```
+
+droits sur les fichiers : 
+
+chown -R www-data:www-data /var/www/domaine2-php7
+chown -R www-data:www-data /var/www/domaine2-php8
+chown -R www-data:www-data /var/www/domaine1-php7
+chown -R www-data:www-data /var/www/domaine1-php8
+
+
+
 et rajouter une ligne :
 
 ```
