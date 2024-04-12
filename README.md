@@ -192,11 +192,11 @@ et coller la configuration suivante (à adapter) :
 
 ```
 <VirtualHost *:80>
-   ServerName php7.domaine1.com
+   ServerName php7domaine1.com
    DocumentRoot /var/www/domaine1-php7
-   DirectoryIndex infophp.php
+
    <FilesMatch \.php$>
-       SetHandler proxy:unix:/run/php/php7.4-fpm-domaine1.sock|fcgi://localhost/
+       SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine1.sock|fcgi://localhost/"
    </FilesMatch>
 </VirtualHost>
 ```
@@ -216,10 +216,11 @@ et coller la configuration suivante (à adapter) :
 
 ```
 <VirtualHost *:80>
-   ServerName php8.domaine1.com
+   ServerName php8domaine1.com
    DocumentRoot /var/www/domaine1-php8
+
    <FilesMatch \.php$>
-       SetHandler proxy:unix:/run/php/php8.2-fpm-domaine1.sock|fcgi://localhost/
+       SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine1.sock|fcgi://localhost/"
    </FilesMatch>
 </VirtualHost>
 ```
@@ -258,10 +259,11 @@ et coller la configuration suivante (à adapter) :
 
 ```
 <VirtualHost *:80>
-   ServerName php7.domaine2.com
+   ServerName php7domaine2.com
    DocumentRoot /var/www/domaine2-php7
+
    <FilesMatch \.php$>
-       SetHandler proxy:unix:/run/php/php7.4-fpm-domaine2.sock|fcgi://localhost/
+       SetHandler "proxy:unix:/run/php/php7.4-fpm-domaine2.sock|fcgi://localhost/"
    </FilesMatch>
 </VirtualHost>
 ```
@@ -282,10 +284,10 @@ et coller la configuration suivante (à adapter) :
 
 ```
 <VirtualHost *:80>
-   ServerName php8.domaine2.com
+   ServerName php8domaine2.com
    DocumentRoot /var/www/domaine2-php8
    <FilesMatch \.php$>
-       SetHandler proxy:unix:/run/php/php8.2-fpm-domaine2.sock|fcgi://localhost/
+       SetHandler "proxy:unix:/run/php/php8.2-fpm-domaine2.sock|fcgi://localhost/"
    </FilesMatch>
 </VirtualHost>
 ```
