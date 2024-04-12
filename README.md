@@ -449,10 +449,10 @@ C:\Windows\System32\drivers\etc\
 <ip du reverse proxy> domaine2.com
 
 
-2a01:cb18:505:c600:a00:27ff:fe8e:d56f php7.domaine1.com
-2a01:cb18:505:c600:a00:27ff:fe8e:d56f php8.domaine1.com
-2a01:cb18:505:c600:a00:27ff:fe8e:d56f php7.domaine2.com
-2a01:cb18:505:c600:a00:27ff:fe8e:d56f php8.domaine2.com
+2a01:cb18:505:c600:a00:27ff:fe8e:d56f php7domaine1.com
+2a01:cb18:505:c600:a00:27ff:fe8e:d56f php8domaine1.com
+2a01:cb18:505:c600:a00:27ff:fe8e:d56f php7domaine2.com
+2a01:cb18:505:c600:a00:27ff:fe8e:d56f php8domaine2.com
 ```
 ^ Nous renseignons l'adresse du reverse proxy puisque se sera lui qui redirigera les utilisateurs vers la bonne adresse ip en fonction de l'URL saisie.
 
